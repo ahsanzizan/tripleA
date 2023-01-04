@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+h1 {
+    @apply font-bold text-3xl mb-3;
+}
+
+h2 {
+    @apply font-bold text-2xl mb-3;
+}
+
+h3 {
+    @apply font-bold text-xl mb-3;
+}
+
+h4 {
+    @apply font-semibold text-lg mb-3;
+}
+
+* {
+    @apply no-underline;
+}
+
+.hamburger-line {
+    @apply w-[30px] h-[2px] my-2 block bg-black;
+}
+
+.hamburger-active > span:nth-child(1){
+    @apply rotate-45
+}
+
+.hamburger-active > span:nth-child(3){
+    @apply -rotate-45 
+}
+
+.hamburger-active > span:nth-child(2){
+    @apply scale-0 
+}
+
+.navbar {
+    @apply bg-white fixed z-[999];
+    box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.5);
+}
+
+.navbar-comp {
+    @apply text-base font-medium py-2 px-4 mx-3 flex hover:text-prim transition duration-150 ease-in-out mb-3;
+}
+
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+}
+
+.hover-underline-animation:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    @apply bg-prim;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+  
+.hover-underline-animation:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Typing animation */
+.typewriter {
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    animation: 
+      typing 3s steps(50, end),
+      blink-caret .4s step-end infinite;
+  }
+  
+  /* The typing effect */
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: black; }
+  }

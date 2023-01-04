@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SanBlog | Admin</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="font-bold text-prim text-center text-3xl mt-10 mb-5">
+            Admin Login
+        </div>
+
+        <div class="text-center text-xl mb-12">
+            Warning! Admin only page, if you're not an admin you'll be redirected to the home page.
+        </div>
+        <form class="bg-white shadow-md rounded px-10 pt-6 pb-8 mb-4 flex flex-col" action="/auth" method="post">
+            <div class="mb-4">
+              <label class="block text-grey-darker text-sm font-bold mb-2" for="name">
+                Admin Name
+              </label>
+              <input required class="shadow appearance-none border border-slate-500 rounded w-full py-2 px-3 text-grey-darker" id="name" name="name" type="text" placeholder="Admin Name">
+            </div>
+            <div class="mb-6">
+              <label class="block text-grey-darker text-sm font-bold mb-2" for="password">
+                Password
+              </label>
+              <input required class="shadow appearance-none border border-slate-500 border-red rounded w-full py-2 px-3 text-grey-darker mb-3" id="password" type="password" placeholder="******************" name="password">
+            </div>
+            <div class="flex items-center justify-between">
+              <button class="bg-prim hover:bg-blue-dark text-white font-bold py-2 px-4 rounded" type="submit">
+                Sign In
+              </button>
+            </div>
+        </div>  
+    </div>
+</body>
+</html>

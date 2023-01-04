@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>tripleA | Articles</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header class="bg-white fixed top-0 left-0 w-full flex items-center z-10">
+        <div class="container">
+            <div class="flex items-center justify-between relative">
+                <div class="px-4">
+                    <a href="#" class="font-bold block hover:rotate-2 transition duration-200 ease-in-out py-6 text-2xl lg:py-3 text-prim">tripleA</a>
+                </div>
+                <div class="flex items-center px-4">
+                    <button id="hamburger" name="hamburger" type="button"
+                    class="block absolute right-4 lg:hidden">
+                        <span class="hamburger-line transition duration-200 ease-in-out origin-top-left"></span>
+                        <span class="hamburger-line transition duration-200 ease-in-out"></span>
+                        <span class="hamburger-line transition duration-200 ease-in-out origin-bottom-left"></span>
+                    </button>
+
+                    <nav id="nav-menu" class="hidden absolute py-3 shadow-lg rounded-lg
+                    max-w-[250px] w-full right-4 top-full lg:block lg:static lg:max-w-full lg:shadow-none lg:rounded-none lg:bg-transparent bg-white">
+                        <ul class="block lg:flex">
+                            <li class="group">
+                                <a href="/" class="navbar-comp hover-underline-animation">Home</a>
+                            </li>
+
+                            <li class="group">
+                                <a href="https://ahsanAazizan.github.io" class="navbar-comp hover-underline-animation">Personal</a>
+                            </li>
+
+                            <li class="group">
+                                <a href="/admin" class="text-base font-semibold text-prim hover:bg-prim py-2 px-4 rounded-sm mx-3 flex hover:text-white transition duration-150 ease-in-out border border-prim">Admin</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="pt-32 pb-36">
+        <div class="container">
+            <div class="border-b-2 pb-36">
+                <p class="text-3xl text-center">Welcome to <span class="font-bold text-prim">tripleA</span>, <br> <span class="text-prim font-bold"><a href="https://ahsanAazizan.github.io" class="hover-underline-animation">ahsanazizan</a></span>'s personal blogging site.</p>
+            </div>
+
+            <div class="mx-auto">
+                <% articles.forEach(article => { %>
+                    <div class="w-full rounded-md">
+                        <div class="border-b-2 px-4 py-10">
+                            <a class="text-3xl font-bold" href="articles/<%= article.slug %>"><%= article.title %></a>
+                            <div class="flex">
+                                <% article.tags.forEach(tag => { %>
+                                    <div class="text-base text-prim mr-3 font-bold">
+                                        <%= tag %>
+                                    </div> 
+                                <% }) %> 
+                            </div>
+                            <div class="opacity-75 mb-6 mt-1">
+                                Posted on <%= article.createdAt.toDateString()%> | by Ahsan 
+                            </div>
+                            <div class="text-base mb-10 font-normal"><%= article.description %></div>
+                            <a href="articles/<%= article.slug %>" class="text-base opacity-80 text-prim rounded-sm px-3 py-2 hover:text-white border border-prim hover:bg-prim transition duration-300 ease-in-out font-semibold mr-5">Read <i class="fa-solid fa-book-open ml-1"></i></a>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 pb-12">
+        <div class="w-full pt-10 border-t border-white">
+            <p class="font-semibold text-md text-center text-white">&copy; Ahsan Awadullah Azizan 2022</p>
+        </div>
+    </footer>
+
+    <script>
+        function copyToClipboard() {
+            var range = document.createRange()
+            range.selectNode(document.getElementById('copy'))
+            window.getSelection().removeAllRanges()
+            window.getSelection().addRange(range)
+            document.execCommand('copy')
+            window.getSelection().removeAllRanges()
+        }
+    </script>
+  <%- include('templates/_footer') %> 

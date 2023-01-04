@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>tripleA | Admin</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header class="bg-white fixed top-0 left-0 w-full flex items-center z-10">
+        <div class="container">
+            <div class="flex items-center justify-between relative">
+                <div class="px-4">
+                    <a href="#" class="font-bold block hover:rotate-2 transition duration-200 ease-in-out py-6 text-2xl lg:py-3 text-prim">tripleA</a>
+                </div>
+                <div class="flex items-center px-4">
+                    <button id="hamburger" name="hamburger" type="button"
+                    class="block absolute right-4 lg:hidden">
+                        <span class="hamburger-line transition duration-200 ease-in-out origin-top-left"></span>
+                        <span class="hamburger-line transition duration-200 ease-in-out"></span>
+                        <span class="hamburger-line transition duration-200 ease-in-out origin-bottom-left"></span>
+                    </button>
+
+                    <nav id="nav-menu" class="hidden absolute py-3 shadow-lg rounded-lg
+                    max-w-[250px] w-full right-4 top-full lg:block lg:static lg:max-w-full lg:shadow-none lg:rounded-none lg:bg-transparent bg-white">
+                        <ul class="block lg:flex">
+                            <li class="group">
+                                <a href="/admin" class="navbar-comp hover-underline-animation">Home</a>
+                            </li>
+
+                            <li class="group">
+                                <a href="/" class="navbar-comp hover-underline-animation">Non-admin</a>
+                            </li>
+
+                            <li class="group">
+                                <a href="https://ahsanAazizan.github.io" class="navbar-comp hover-underline-animation">Personal</a>
+                            </li>
+
+                            <li class="group">
+                                <a href="mailto:ahsanaz461@gmail.com" class="text-base font-semibold text-prim hover:bg-prim py-2 px-4 rounded-sm mx-3 flex hover:text-white transition duration-150 ease-in-out border border-prim">Contact</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="pt-32 pb-36">
+        <div class="container">
+            <h1 class="mb-3 text-4xl font-semibold text-prim text-center">tripleA<span class="text-black"> Admin</span></h1>
+            <p class="mb-10 text-base font-normal text-center">Welcome to <span class="text-prim font-semibold">tripleA</span> Administration page. As an admin, you can create an article, edit an article, delete an article.</p>
+            <div class="text-center mb-20">
+                <a href="/articles/new" class="text-xl text-prim font-medium hover:bg-prim py-2 px-4 rounded-md uppercase hover:text-white transition duration-150 ease-in-out border border-prim">new article</a>
+            </div>
+    
+            <% articles.forEach(article => { %>
+            <div class="w-full">
+                <div class="border-b-2 px-4 py-8">
+                    <a class="text-3xl font-bold" href="articles/<%= article.slug %>"><%= article.title %></a>
+                    
+                    <div class="opacity-75">
+                        <%= article.createdAt.toLocaleDateString() %>
+                    </div>
+
+                    <div class="flex mb-5">
+                        <% article.tags.forEach(tag => { %>
+                        <div class="text-base text-prim mr-3 font-bold">
+                            <%= tag %> 
+                        </div> 
+                        <% }) %> 
+                    </div>
+
+                    <div class="text-base mb-5"><%= article.description %></div>
+                    
+                    <form action="/articles/<%= article.id %>?_method=DELETE" method="POST">
+                        <a href="articles/edit/<%= article.id %>" class="px-2 py-2 font-semibold hover-underline-animation hover:text-prim"><i class="fa-solid fa-pencil"></i></a>
+                        <button type="submit" class="px-2 py-2 rounded-md font-semibold hover-underline-animation hover:text-prim"><i class="fa-solid fa-trash"></i></button>
+                    </form>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+    </section>
+
+  <%- include('templates/_footer') %> 
