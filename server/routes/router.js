@@ -10,7 +10,7 @@ function saveAndRedirect(path) {
       article.description = req.body.description
       article.markdown = req.body.markdown
       article.tags = req.body.tags.split(' ')
-      
+
       try {
         article = await article.save()
         res.redirect(`/articles/${article.slug}`)

@@ -42,16 +42,15 @@
             </div>
         </div>
     </header>
-
-    <section class="pb-32 pt-28">
+    <section class="pb-32 pt-20">
         <div class="container">
-            <h1 class="text-4xl font-bold border-b-2 py-5 text-center"><%= article.title %></h1>
-            <div class="opacity-75 mb-10 mt-2 text-center">
+            <h1 class="text-4xl font-extrabold pb-3 text-center"><%= article.title %></h1>
+            <div class="opacity-75 mb-10 pb-5 border-b-2 text-center">
                 Posted on <%= article.createdAt.toDateString()%> | by Ahsan 
             </div>
 
-            <div class="mx-auto">
-                <%- article.sanitizedHtml %> 
+            <div class="prose mx-auto">
+                <%- article.sanitizedHtml %>
             </div>
         </div>
     </section>

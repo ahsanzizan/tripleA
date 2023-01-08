@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,29 +44,33 @@
         </div>
     </header>
 
-    <section class="pt-32 pb-36">
+    <section class="py-32">
         <div class="container">
-            <div class="border-b-2 pb-36">
-                <p class="text-3xl text-center">Welcome to <span class="font-bold text-prim">tripleA</span>, <br> <span class="text-prim font-bold"><a href="https://ahsanAazizan.github.io" class="hover-underline-animation">ahsanazizan</a></span>'s personal blogging site.</p>
+            <div class="text-center">
+                <p class="text-4xl mb-16">Welcome to <span class="font-bold text-prim">tripleA</span>, <br> <span class="text-prim font-bold"><a href="https://ahsanAazizan.github.io" class="hover-underline-animation">ahsanazizan</a></span>'s personal blogging site.</p>
             </div>
+        </div>
+    </section>
 
-            <div class="mx-auto">
+    <section id="articles" class="pb-36">
+        <div class="container">
+            <div class="mx-auto flex flex-wrap">
                 <% articles.forEach(article => { %>
-                    <div class="w-full rounded-md">
-                        <div class="border-b-2 px-4 py-10">
-                            <a class="text-3xl font-bold" href="articles/<%= article.slug %>"><%= article.title %></a>
-                            <div class="flex">
+                    <div class="w-1/2">
+                        <div class="border-t-2 px-4 py-10">
+                            <a class="text-3xl font-bold" href="/articles/<%= article.slug %>"><%= article.title %></a>
+                            <div class="flex flex-wrap">
                                 <% article.tags.forEach(tag => { %>
-                                    <div class="text-base text-prim mr-3 font-bold">
+                                    <p class="text-base text-prim mr-3 font-bold">
                                         <%= tag %>
-                                    </div> 
+                                    </p> 
                                 <% }) %> 
                             </div>
                             <div class="opacity-75 mb-6 mt-1">
-                                Posted on <%= article.createdAt.toDateString()%> | by Ahsan 
+                                Posted on <%= article.createdAt.toDateString()%> | Written by Ahsan 
                             </div>
-                            <div class="text-base mb-10 font-normal"><%= article.description %></div>
-                            <a href="articles/<%= article.slug %>" class="text-base opacity-80 text-prim rounded-sm px-3 py-2 hover:text-white border border-prim hover:bg-prim transition duration-300 ease-in-out font-semibold mr-5">Read <i class="fa-solid fa-book-open ml-1"></i></a>
+                            <p class="text-base mb-10 font-normal max-w-md"><%= article.description %></p>
+                            <a href="/articles/<%= article.slug %>" class="text-base opacity-80 text-prim rounded-sm px-3 py-2 hover:text-white border border-prim hover:bg-prim transition duration-300 ease-in-out mr-5">Read <i class="fa-solid fa-book-open ml-1"></i></a>
                         </div>
                     </div>
                 <% }) %>

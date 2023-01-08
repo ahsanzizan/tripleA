@@ -45,7 +45,7 @@
     </header>
     <section class="pt-32 pb-36">
         <div class="container">
-            <h1 class="mb-4 text-2xl font-bold">Edit Article</h1>
+            <h1 class="mb-10 text-3xl font-bold">Edit Article</h1>
     
             <form action="/articles/<%= article.id %>?_method=PUT" method="POST">
                 <div class="mb-5">
@@ -61,7 +61,7 @@
                 </div>
                 <div class="mb-4">
                     <label for="markdown" class="block text-gray-700 text-sm font-bold mb-2 w-full">Markdown</label>
-                    <textarea required name="markdown" id="markdown" class="shadow appearance-none border rounded w-full pb-20 px-2 pt-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"><%= article.markdown %></textarea>
+                    <textarea required name="markdown" id="markdown" class="shadow appearance-none border rounded w-full pb-96 px-2 pt-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"><%= article.markdown %></textarea>
                 </div>
                 
                 <div class="mb-4">
