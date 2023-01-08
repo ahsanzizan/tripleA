@@ -1,5 +1,4 @@
 # tripleA
-
 tripleA is a blogging app made by me. This project is currently under development.
 
 
