@@ -1,66 +1,46 @@
-const express = require('express')
+const Admin = require('../models/Admin')
 const Article = require('../models/Article')
+
+const express = require('express')
 const router = express.Router()
 
-// save and redirect
-function saveAndRedirect(path) {
-    return async (req, res) => {
-      let article = req.article
-      article.title = req.body.title
-      article.description = req.body.description
-      article.markdown = req.body.markdown
-      article.tags = req.body.tags.split(' ')
 
-      try {
-        article = await article.save()
-        res.redirect(`/articles/${article.slug}`)
-      } catch (e) {
-        res.render(`${path}`, { article: article })
-        console.log(e)
-      }
-    }
+router.get('/', async (req, res) => {
+  const articles = await Article.find().sort({ createdAt: 'desc' })
+  res.render('index', { articles: articles})
+})
+
+router.get('/admin', async (req, res) => {
+  if (req.session.logged) {
+      const articles = await Article.find().sort({ createdAt: 'desc' })
+      res.render('admin', { articles: articles })
+  } else {
+      res.redirect('/admin/login')
   }
-
-router.get('/new', (req, res) => {
-    if (!req.session.logged) return
-    res.render('new', { article: new Article()})
 })
 
-router.get('/edit/:id', async (req, res) => {
-    if (!req.session.logged) res.redirect('/')
-    const article = await Article.findById(req.params.id)
-    res.render('edit', { article: article})
+router.get('/admin/login', (req, res) => {
+  res.render('login')
 })
 
-router.get('/:slug', async (req, res) => {
-    const article = await Article.findOne({slug: req.params.slug})
-    if(article == null) {
-        res.redirect('/')
-        return
-    }
-    res.render('article', {article: article})
-})
+router.post('/auth', (req, res) => {
+  const name = req.body.name
+  const password = req.body.password
 
-router.post('/', 
-async (req, res, next) => {
-    req.article = new Article()
-    next()
-},
-saveAndRedirect('new'))
-
-router.put('/:id',
-async (req, res, next) => {
-    if (!req.session.logged) res.redirect('/')
-    req.article = await Article.findById(req.params.id)
-    next()
-},
-saveAndRedirect('edit'))
-
-router.delete('/:id', 
-async (req, res) => {
-    if (!req.session.logged) res.redirect('/')
-    await Article.findByIdAndDelete(req.params.id)
-    res.redirect('/admin')
+  if (name && password) {
+      Admin.findOne({
+          name: name,
+          password: password
+      }).then(msg => {
+          if (msg) {
+              req.session.logged = true
+              req.session.name = name
+              res.redirect('/admin')
+          } else {
+              res.redirect('/')
+          }
+      }).catch(error => res.status(500).send({msg: "error ocurred when finding admin"}))
+  }
 })
 
 module.exports = router
