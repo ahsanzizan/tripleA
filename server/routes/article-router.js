@@ -9,6 +9,7 @@ function saveAndRedirect(path) {
       article.title = req.body.title
       article.description = req.body.description
       article.markdown = req.body.markdown
+      article.createdBy = req.session.name
       article.tags = req.body.tags.split(' ')
 
       try {

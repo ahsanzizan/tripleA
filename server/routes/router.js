@@ -7,7 +7,7 @@ const router = express.Router()
 
 router.get('/', async (req, res) => {
   const articles = await Article.find().sort({ createdAt: 'desc' })
-  res.render('index', { articles: articles})
+  res.render('index', { articles: articles })
 })
 
 router.get('/admin', async (req, res) => {
