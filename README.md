@@ -21,9 +21,9 @@ https://www.mongodb.com/docs/manual/installation/
 
 
 ## Preview
-![home preview](/home_preview.png "Home Preview")
-![article preview](/article_preview.png "Article Preview")
-![admin login preview](/admin_preview.png "Admin Login Preview")
-![admin home preview](/admin_home.png "Admin home preview")
-![add article preview](/add_preview.png "Add Article Preview")
-![edit article preview](/edit_preview.png "Edit Article Preview")
+![home preview](/preview/home_preview.png "Home Preview")
+![article preview](/preview/article_preview.png "Article Preview")
+![admin login preview](/preview/admin_preview.png "Admin Login Preview")
+![admin home preview](/preview/admin_home.png "Admin home preview")
+![add article preview](/preview/add_preview.png "Add Article Preview")
+![edit article preview](/preview/edit_preview.png "Edit Article Preview")
