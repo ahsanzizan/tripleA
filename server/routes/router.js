@@ -43,4 +43,9 @@ router.post('/auth', (req, res) => {
   }
 })
 
+router.post('/logout', (req, res) => {
+  req.session.logged = false
+  res.redirect('/')
+})
+
 module.exports = router
