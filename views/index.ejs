@@ -50,15 +50,4 @@
             <p class="font-semibold text-md text-center text-white">&copy; Ahsan Awadullah Azizan 2022</p>
         </div>
     </footer>
-
-    <script>
-        function copyToClipboard() {
-            var range = document.createRange()
-            range.selectNode(document.getElementById('copy'))
-            window.getSelection().removeAllRanges()
-            window.getSelection().addRange(range)
-            document.execCommand('copy')
-            window.getSelection().removeAllRanges()
-        }
-    </script>
   <%- include('templates/_footer') %> 
